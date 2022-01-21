@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand text-white">Surabi Resturant</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <button class="btn btn-primary mr-3" routerLink="/todayBill">Get Today Sale</button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="text-white">Admin Dashboard</li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <h2 class="text-white my-2 my-sm-0" *ngIf='adminService.isLoggedIn()'>
+            <span class="mr-2">{{adminService.username}}</span><span
+                ><i class="fa fa-user"></i></span>
+        </h2>
+         <button class="btn btn-outline-danger text-white ml-3 my-2 my-sm-0 mr-0" (click)="logout()" type="submit" >Log Out</button>
+     </form>
+    </div>
+  </nav>
+
+
+  
+  <div class="container mt-5">
+
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+        
+          <th scope="col">Time</th>
+          <th scope="col">Item Name</th>
+          <th scope="col">Item Quantity </th>
+          <th scope="col">Item Price</th>
+          <th scope="col">Total Price</th>
+   
+
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cart of todayBill" >
+     
+          <td>{{cart.time}}</td>
+          <td >{{cart.item.name}}</td>
+          <td >{{cart.item.qty}}</td>
+          <td >{{cart.item.price}}</td> 
+         
+          <td >{{(cart.item.qty*cart.item.price)}}</td>
+    
+        </tr>
+        
+        
+      </tbody>
+      
+    </table>
+    
+    
+    
+
+
+  </div>

@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand text-white">Surabi Resturant</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="text-white btn btn-outline-primary" routerLink="/userDashboard">User Dashboard</li>
+        <button class="btn btn-primary ml-2"  (click)="myCart()">My Cart</button>
+      </ul>
+    
+      <form class="form-inline my-2 my-lg-0">
+        <h2 class="text-white my-2 my-sm-0" *ngIf='userService.isLoggedIn()'>
+            <span class="mr-2">{{userService.username}}</span><span
+                ><i class="fa fa-user"></i></span>
+        </h2>
+         <button class="btn btn-outline-danger text-white ml-3 my-2 my-sm-0 mr-0" (click)="logout()" type="submit" >Log Out</button>
+     </form>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Add To Cart</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of itemDetail">
+          <th scope="row">{{item.id}}</th>
+          <td>{{item.name}}</td>
+          <td>{{item.price}}</td>
+          <td>{{item.qty}}</td>
+          <td>
+
+            <button class="btn btn-primary" (click)="addToCart(item.id,item.name)">Add</button>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+
+
+  </div>

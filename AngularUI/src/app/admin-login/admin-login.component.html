@@ -1,0 +1,77 @@
+<marquee width="100%" direction="right" height="50  px">
+    <h1><strong>Resturant Mini Project</strong>  </h1>  
+       </marquee>
+   
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <div class="container-fluid">
+         <a class="navbar-brand" href="#">Surabi Resturant</a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+             <li class="nav-item">
+               <a class="nav-link active" aria-current="page" href="#">Home</a>
+             </li>          
+           </ul>
+          
+         </div>
+       </div>
+     </nav>
+
+<div class='container pt-5 pb-5'>
+    <div class="row " >
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6 col-lg-offset-3">
+            <h3 class="text-center text-danger">{{errMessage}}</h3>
+            <form #userform='ngForm' (ngSubmit)='login()'style="background: linear-gradient(90deg,hsl(0,70%,50%,0.5) 0%,hsla(260,29%,36%,1)100%);"
+                class="bg-secondary text-white pt-5 pb-5 pl-5 pr-5 border border-dark rounded">
+                <h1 class='text-center '><strong> Admin Login</strong></h1>
+                <div class="form-group">
+                    <label for="username">
+                        <h4>Email</h4>
+                    </label>
+                    <input type="text" name='email' class='form-control' [(ngModel)]='admin.email' required
+                        #email='ngModel' [class.is-invalid]='email.invalid && email.touched'
+                        pattern='^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[.]+[a-zA-Z0-9.-]+$' placeholder="Enter email">
+                    <div *ngIf='email.touched'>
+                        <div *ngIf='email.errors && (email.invalid)'>
+                            <small class="text-danger" *ngIf='email.errors.required'>
+                                Email is required.
+                            </small>
+                            <small class="text-danger" *ngIf='email.errors.pattern'>
+                                Please enter valid email id (Ex. alok@gmail.com).
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">
+                        <h4>Password</h4>
+                    </label>
+                    <input type="password" name='password' class='form-control' [(ngModel)]='admin.password' required
+                        #password='ngModel' [class.is-invalid]='password.invalid && password.touched'
+                        pattern='^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$'
+                        placeholder="Enter password">
+                    <div *ngIf='password.touched'>
+                        <div *ngIf='password.errors && (password.invalid)'>
+                            <small class="text-danger" *ngIf='password.errors.required'>
+                                Password is required.
+                            </small>
+                            <small class="text-danger" *ngIf='password.errors.pattern'>
+                                Minimum eight characters, at least one letter, one number and one special character:
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="center">
+                    <button type="submit" class="btn btn-secondary my-2 my-sm-0 bg-success" value="Login">Login
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
